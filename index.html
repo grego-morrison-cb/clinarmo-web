@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinarmo | Statistical Programming Harmony</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361EE;
+            --text: #1E293B;
+            --bg: #FFFFFF;
+            --soft-bg: #F8FAFC;
+            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Glassmorphism Nav --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: -1px; color: var(--primary); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 50% 50%, #EEF2FF 0%, #FFFFFF 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: appear 1s var(--transition) forwards;
+        }
+
+        .hero h1 span { font-weight: 600; color: var(--primary); }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: #64748B;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: appear 1s var(--transition) 0.2s forwards;
+        }
+
+        /* --- Antigravity Buttons --- */
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            animation: appear 1s var(--transition) 0.4s forwards;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.3);
+        }
+
+        /* --- Floating Elements (The Antigravity Touch) --- */
+        .float-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(0, 210, 255, 0.1) 100%);
+            filter: blur(60px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes appear {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, 50px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CLIN<span>ARMO</span></div>
+        <a href="#contact" class="cta-btn" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; animation: none; opacity: 1;">Let's talk</a>
+    </nav>
+
+    <section class="hero">
+        <div class="float-blob" style="top: 10%; left: 10%;"></div>
+        <div class="float-blob" style="bottom: 10%; right: 10%; animation-delay: -5s;"></div>
+        
+        <h1>Data that <span>flows</span>,<br>Science that stays.</h1>
+        <p>Expert statistical programming for the pharmaceutical industry. We harmonize complex data to accelerate clinical breakthroughs.</p>
+        <a href="#services" class="cta-btn">Descubrí el método Clinarmo</a>
+    </section>
+
+    <script>
+        // Micro-interacción: Parallax suave basado en el mouse
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.float-blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 20;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
